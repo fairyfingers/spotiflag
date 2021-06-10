@@ -5,8 +5,11 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Window
 import android.widget.Button
+import android.widget.ProgressBar
 import androidx.annotation.RequiresApi
+import androidx.core.view.isVisible
 import com.example.spotiflag.consts.APP_CLIENT_ID
 import com.example.spotiflag.consts.REDIRECT_URI
 import com.example.spotiflag.consts.REQUEST_CODE
@@ -24,11 +27,15 @@ import java.util.*
 
 class HomeActivity : AppCompatActivity() {
     private val signInButton: Button by lazy {
-        findViewById(R.id.button)
+        findViewById(R.id.connect_button)
+    }
+    private val loadingCircle: ProgressBar by lazy {
+        findViewById(R.id.progress_bar)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        requestWindowFeature(Window.FEATURE_NO_TITLE)
         setContentView(R.layout.activity_home)
     }
 
@@ -67,6 +74,7 @@ class HomeActivity : AppCompatActivity() {
         }
 
         signInButton.setOnClickListener {
+            loadingCircle.isVisible = true
             signInButton.isEnabled = false
             signInButton.text = resources.getText(
                 R.string.button_state_being_connected
@@ -145,6 +153,9 @@ class HomeActivity : AppCompatActivity() {
             )
     }
 
+    /**
+     * Sends an HTTP request using OKHttp3 package.
+     */
     private fun sendRequest(url: String, callback: TreatResponse) {
         val token = this.getSharedPreferences("Spotiflag", Context.MODE_PRIVATE)
             .getString("Token", null)
@@ -175,6 +186,9 @@ class HomeActivity : AppCompatActivity() {
         fun treatResponse(response: Response)
     }
 
+    /**
+     * Writes a file containing all received data from Spotify API.
+     */
     private fun writeFile(body: String, filename: String) {
         val file = File(this.filesDir, filename)
         val fileWriter = FileWriter(file)

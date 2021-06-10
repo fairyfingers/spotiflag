@@ -1,5 +1,46 @@
 <resources>
-    <string name="app_name">spotiflag</string>
-    <string name="button_state_default">CONNECT TO SPOTIFY</string>
-    <string name="button_state_being_connected">YOU\'RE BEING CONNECTED</string>
+    <string name="app_name">
+        Spotiflag
+    </string>
+    <string name="button_state_default">
+        CONNECT TO SPOTIFY
+    </string>
+    <string name="button_state_being_connected">
+        YOU\'RE BEING CONNECTED...
+    </string>
+    <string name="app_logo_desc">
+        Application logo image.
+    </string>
+    <string name="avatar_desc">
+        User\'s avatar image.
+    </string>
+
+    <string name="level_1">
+        Unpopular dick sucker.
+    </string>
+    <string name="level_2">
+        Outdated piece of shit.
+    </string>
+    <string name="level_3">
+        Not so bad.
+    </string>
+    <string name="level_4">
+        Really nice tastes.
+    </string>
+    <string name="level_5">
+        YOU ARE SO SWAGG OMG.
+    </string>
+
+    <string name="error_title">
+        Woops...
+    </string>
+    <string name="error_text">
+        Authentication failure. Have you revoked?
+    </string>
+    <string name="button_backhome">
+        BACK HOME
+    </string>
+    <string name="button_logout">
+        x
+    </string>
 </resources>
