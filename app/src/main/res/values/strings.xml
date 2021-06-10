@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">spotiflag</string>
+    <string name="button_state_default">CONNECT TO SPOTIFY</string>
+    <string name="button_state_being_connected">YOU\'RE BEING CONNECTED</string>
 </resources>
