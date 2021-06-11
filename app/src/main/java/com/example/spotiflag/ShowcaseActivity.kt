@@ -3,6 +3,8 @@ package com.example.spotiflag
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.widget.Button
 import android.widget.TextView
 import com.example.spotiflag.model.Root
@@ -19,7 +21,7 @@ class ShowcaseActivity : AppCompatActivity() {
     private var data: Root? = null
     private var popularity = 0
     private val avatar: CircleImageView by lazy {
-        findViewById(R.id.connect_button)
+        findViewById(R.id.avatar)
     }
     private val levelText: TextView by lazy {
         findViewById(R.id.level_text)
@@ -123,8 +125,7 @@ class ShowcaseActivity : AppCompatActivity() {
                 }
 
                 override fun onResponse(call: Call, response: Response) {
-                    runOnUiThread() {
-                        var images: ArrayList<ImageInfo>? = ArrayList<ImageInfo>()
+                        var images: ArrayList<ImageInfo>?
                         try {
                             images = userMapDataInfoResponse(
                                 response.body()!!.string()
@@ -134,15 +135,14 @@ class ShowcaseActivity : AppCompatActivity() {
                         if (images != null && images.size < 1) {
                             data?.avatarUrl = "https://www.babelio.com/users/AVT_Linus-Torvald_1898.jpeg"
                         }
-                        else {
-                            for (image in images!!) {
-                                data?.avatarUrl = image.url
-                            }
-                        }
+                        else data?.avatarUrl = images?.get(0)?.url
 
-                        Picasso.get().load(data?.avatarUrl).into(this@ShowcaseActivity.avatar)
+                        val handler = Handler(Looper.getMainLooper())
+                        handler.post {
+                            val result = Picasso.get().load(data?.avatarUrl)
+                            result.into(avatar)
+                        }
                     }
-                }
             })
     }
 }
