@@ -11,33 +11,51 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/avatar"
-            android:layout_marginTop="100dp"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp"
             app:civ_border_color="@color/colorButtonGrey"
-            app:civ_border_width="3dp"/>
+            app:civ_border_width="3dp" />
 
         <TextView
             android:id="@+id/level_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
             android:layout_marginTop="235dp"
+            android:gravity="center_horizontal"
             android:textColor="@color/colorLightestGreen"
-            android:textSize="30sp"/>
+            android:textSize="30sp" />
 
         <Button
             android:id="@+id/logout_button"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:background="@color/cardview_dark_background"
             android:layout_alignParentRight="true"
-            android:textColor="@color/white"
-            android:text="@string/button_logout" />
+            android:background="@color/cardview_dark_background"
+            android:text="@string/button_logout"
+            android:textColor="@color/white" />
+
+        <ProgressBar
+            android:id="@+id/levelBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminate="false"
+            android:progressTint="@color/colorLightestGreen"
+            android:scaleY="2.5"
+            android:translationY="370dp" />
+
+        <TextView
+            android:id="@+id/reachedText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="300dp"
+            android:gravity="center_horizontal"
+            android:textColor="@color/colorButtonGrey"
+            android:textSize="20sp" />
 
     </RelativeLayout>
 

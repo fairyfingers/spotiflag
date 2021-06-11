@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.widget.Button
+import android.widget.ProgressBar
 import android.widget.TextView
 import com.example.spotiflag.model.Root
 import com.example.spotiflag.model.userData.ImageInfo
@@ -25,6 +26,12 @@ class ShowcaseActivity : AppCompatActivity() {
     }
     private val levelText: TextView by lazy {
         findViewById(R.id.level_text)
+    }
+    private val reachedText: TextView by lazy {
+        findViewById(R.id.reachedText)
+    }
+    private val levelBar: ProgressBar by lazy {
+        findViewById(R.id.levelBar)
     }
     private val logoutButton: Button by lazy {
         findViewById(R.id.logout_button)
@@ -64,6 +71,9 @@ class ShowcaseActivity : AppCompatActivity() {
                     levelText.setText(R.string.level_5);
                 }
             }
+
+            reachedText.text = "You've reached $popularity% popularity !"
+            levelBar.progress = popularity
 
         } catch (e: Error) { throw Error(e) }
 
